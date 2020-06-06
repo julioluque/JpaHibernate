@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import ar.jluque.com.model.Direccion;
 import ar.jluque.com.model.Empleado;
 
 public class TestEmpleados {
@@ -41,9 +42,11 @@ public class TestEmpleados {
 		EntityManager man = emf.createEntityManager();
 
 		Empleado e1 = new Empleado(6L, "Luque", "Sofia", LocalDate.of(1985, 8, 12));
-
+		Direccion d1 = new Direccion(15L, "Calle falsa 123", "Springfield", "Spring", "EEUU");
+		e1.setDireccion(d1);
 		man.getTransaction().begin();
 		man.persist(e1);
+		man.persist(d1);
 		man.getTransaction().commit();
 		man.close();
 		
