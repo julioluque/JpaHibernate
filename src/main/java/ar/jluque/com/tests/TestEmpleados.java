@@ -16,47 +16,13 @@ public class TestEmpleados {
 
 	public static void main(String[] args) {
 		
-		
-		/*
-		
-		insertInicial();
-		
-		getListadoEmpleados();
-		
 		EntityManager man = emf.createEntityManager();
 
-		man.getTransaction().begin();
-		Empleado e = man.find(Empleado.class, 10L);
-		e.setApellido("Perez");
-		if (e.getNombre().equals("Julios")) {
-			e.setNombre("Sofia");
-		} else {
-			e.setFechaNacimiento(new GregorianCalendar(2001, 8, 12).getTime());
-		}
-		man.getTransaction().commit();
-		man.close();
+		Empleado e1 = new Empleado(10L, "Homero", "Simpson", LocalDate.of(1985, 8, 12));
+		e1.setDireccion(new Direccion(15L, "Av Siempre Viva 123", "Springfield", "Spring", "EEUU"));
 		
-		getListadoEmpleados();
-		 */
-		
-		EntityManager man = emf.createEntityManager();
-
-		Empleado e1 = new Empleado(6L, "Luque", "Sofia", LocalDate.of(1985, 8, 12));
-		Direccion d1 = new Direccion(15L, "Calle falsa 123", "Springfield", "Spring", "EEUU");
-		e1.setDireccion(d1);
-		man.getTransaction().begin();
+		man.getTransaction().begin(); 
 		man.persist(e1);
-		man.persist(d1);
-		man.getTransaction().commit();
-		man.close();
-		
-		imprimirTodo();
-		
-		man = emf.createEntityManager();
-		man.getTransaction().begin();
-		e1 = man.merge(e1);
-		e1.setApellido("llllllll");
-		man.remove(e1);
 		man.getTransaction().commit();
 		man.close();
 		

@@ -3,6 +3,7 @@ package ar.jluque.com.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Empleado implements Serializable {
 	private LocalDate fechaNacimiento;
 
 	// RELACIONES
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "ID_DIRECCION")
 	private Direccion direccion;
 
